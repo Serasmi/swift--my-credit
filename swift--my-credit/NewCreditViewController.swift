@@ -8,6 +8,9 @@
 import UIKit
 
 class NewCreditViewController: UIViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let saveContext = (UIApplication.shared.delegate as! AppDelegate).saveContext
 
     @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var duration: UITextField!
@@ -28,8 +31,6 @@ class NewCreditViewController: UIViewController {
     @IBAction func calculate() {
         let monthPayment = calcMonthPayment()
         let fullOverPayment = calcOverPayment(perMonth: monthPayment)
-        
-        print(monthPayment)
         
         payment.text = "\(Int(monthPayment)) ₽/month"
         overPayment.text = "\(Int(fullOverPayment)) ₽"
@@ -76,7 +77,18 @@ class NewCreditViewController: UIViewController {
     }
     
     func saveCredit(with title: String) {
+        let newCreditItem = CreditItem(context: context)
         
+        newCreditItem.amount = Int64(amount.text ?? "0") ?? 0
+        newCreditItem.createdAt = Date()
+        newCreditItem.duration = Int64(duration.text ?? "0") ?? 0
+        newCreditItem.id = UUID()
+        newCreditItem.overPayment = Float(overPayment.text ?? "0") ?? 0
+        newCreditItem.payment = Float(payment.text ?? "0") ?? 0
+        newCreditItem.rate = Float(rate.text ?? "0") ?? 0
+        newCreditItem.title = title
+        
+        saveContext();
     }
     
     @IBAction func showAlert(_ sender: Any) {

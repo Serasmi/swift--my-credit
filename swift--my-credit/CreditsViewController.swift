@@ -8,10 +8,14 @@
 import UIKit
 
 class CreditsViewController: UIViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let saveContext = (UIApplication.shared.delegate as! AppDelegate).saveContext
 
+    @IBOutlet weak var emptyDataVIew: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private var credits: [Credit] = []
+    private var credits: [CreditItem]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +23,28 @@ class CreditsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        fetchCredits()
+    }
+    
+    func fetchCredits() {
+        do {
+            credits = try context.fetch(CreditItem.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.initViews()
+            }
+        } catch  {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func initViews() {
+        let hasCredits = credits?.count ?? 0 > 0
+        
+        tableView.isHidden = hasCredits ? false : true
+        emptyDataVIew.isHidden = hasCredits ? true : false
     }
 
 }
@@ -29,12 +55,27 @@ extension CreditsViewController: UITableViewDelegate {
 
 extension CreditsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.credits.count
+        return self.credits?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "creditCell", for: indexPath)
+        let credit = credits![indexPath.row]
+        
+        cell.textLabel?.text = credit.title
+        cell.accessoryType = .disclosureIndicator
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
+            let creditToRemove = self.credits![indexPath.row]
+            self.context.delete(creditToRemove)
+            self.saveContext()
+            self.fetchCredits()
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }

@@ -16,32 +16,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="udP-3p-MMO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="creditCell" id="fPa-v8-z3Q">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fPa-v8-z3Q" id="msf-CH-8W2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6Vn-4L-JnF">
+                                <rect key="frame" x="0.0" y="60" width="414" height="753"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-XT-GMB">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="No credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngM-on-KHx">
+                                        <rect key="frame" x="0.0" y="31" width="414" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="udP-3p-MMO">
+                                        <rect key="frame" x="0.0" y="39" width="414" height="714"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="creditCell" id="fPa-v8-z3Q">
+                                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fPa-v8-z3Q" id="msf-CH-8W2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="udP-3p-MMO" secondAttribute="bottom" id="CML-vp-dcn"/>
-                            <constraint firstItem="udP-3p-MMO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mQe-qN-NW3"/>
-                            <constraint firstItem="udP-3p-MMO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pnd-Ab-hie"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="udP-3p-MMO" secondAttribute="trailing" id="r7Q-it-w80"/>
+                            <constraint firstItem="6Vn-4L-JnF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="37h-A3-cKH"/>
+                            <constraint firstItem="6Vn-4L-JnF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hmn-i7-5yd"/>
+                            <constraint firstItem="6Vn-4L-JnF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="izX-hb-BmI"/>
+                            <constraint firstItem="6Vn-4L-JnF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="y1E-6e-w1P"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Credits" image="list.bullet" catalog="system" id="wS5-2o-tgP"/>
                     <connections>
+                        <outlet property="emptyDataVIew" destination="ngM-on-KHx" id="OWT-pJ-B5b"/>
                         <outlet property="tableView" destination="udP-3p-MMO" id="bn3-5d-oMn"/>
                     </connections>
                 </viewController>
