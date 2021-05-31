@@ -23,7 +23,9 @@ class CreditsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchCredits()
     }
     
@@ -59,11 +61,10 @@ extension CreditsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "creditCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CreditTableViewCell.identifier, for: indexPath) as! CreditTableViewCell
         let credit = credits![indexPath.row]
         
-        cell.textLabel?.text = credit.title
-        cell.accessoryType = .disclosureIndicator
+        cell.configure(with: credit)
         
         return cell
     }
@@ -77,5 +78,9 @@ extension CreditsViewController: UITableViewDataSource {
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CreditTableViewCell.height + CreditTableViewCell.padding
     }
 }

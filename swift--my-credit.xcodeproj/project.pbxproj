@@ -16,6 +16,7 @@
 		ED55DE56265A94E700BABCDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED55DE54265A94E700BABCDC /* LaunchScreen.storyboard */; };
 		ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */; };
 		ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE62265A9C7600BABCDC /* AboutViewController.swift */; };
+		EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		ED55DE57265A94E700BABCDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditViewController.swift; sourceTree = "<group>"; };
 		ED55DE62265A9C7600BABCDC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				ED55DE4F265A94E600BABCDC /* swift__my_credit.xcdatamodeld */,
 				ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */,
 				ED55DE62265A9C7600BABCDC /* AboutViewController.swift */,
+				EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */,
 			);
 			path = "swift--my-credit";
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */,
 				ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */,
 				ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */,
+				EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */,
 				ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
