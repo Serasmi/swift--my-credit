@@ -88,6 +88,12 @@ class CreditTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        amountLabel.text = nil
+        rateLabel.text = nil
+        titleLabel.text = nil
+        paymentLabel.text = nil
+        rateLabel.text = nil
     }
     
     private func initSubviews() {
