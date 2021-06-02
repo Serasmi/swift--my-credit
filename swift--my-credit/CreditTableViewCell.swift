@@ -114,7 +114,7 @@ class CreditTableViewCell: UITableViewCell {
         amountLabel.text = "\(creditItem.amount) ₽"
         rateLabel.text = "\(creditItem.rate)%"
         titleLabel.text = creditItem.title
-        paymentLabel.text = "\(creditItem.payment) ₽/мес"
+        paymentLabel.text = "\(creditItem.payment) ₽/month"
         durationLabel.text = "\(creditItem.duration)y"
     }
 

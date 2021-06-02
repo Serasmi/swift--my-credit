@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */; };
 		ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE46265A94E600BABCDC /* AppDelegate.swift */; };
 		ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE48265A94E600BABCDC /* SceneDelegate.swift */; };
 		ED55DE4B265A94E600BABCDC /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE4A265A94E600BABCDC /* CreditsViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDetailsViewController.swift; sourceTree = "<group>"; };
 		ED55DE43265A94E600BABCDC /* swift--my-credit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift--my-credit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED55DE46265A94E600BABCDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED55DE48265A94E600BABCDC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */,
 				ED55DE62265A9C7600BABCDC /* AboutViewController.swift */,
 				EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */,
+				ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */,
 			);
 			path = "swift--my-credit";
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				ED55DE4B265A94E600BABCDC /* CreditsViewController.swift in Sources */,
 				ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */,
 				ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */,
+				ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */,
 				ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */,
 				EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */,
 				ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */,

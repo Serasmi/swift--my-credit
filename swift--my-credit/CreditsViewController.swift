@@ -48,6 +48,20 @@ class CreditsViewController: UIViewController {
         tableView.isHidden = hasCredits ? false : true
         emptyDataVIew.isHidden = hasCredits ? true : false
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCreditDetails" {
+            guard let vc = segue.destination as? CreditDetailsViewController,
+                  let selectedCredit = tableView.indexPathForSelectedRow?.row
+            else {
+                return
+            }
+            guard let creditItem = credits?[selectedCredit] else {
+                return
+            }
+            vc.creditItem = creditItem
+        }
+    }
 
 }
 
