@@ -3,6 +3,7 @@
     <entity name="CreditItem" representedClassName="CreditItem" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="currency" optional="YES" attributeType="String"/>
         <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="overPayment" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -11,6 +12,6 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="CreditItem" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="CreditItem" positionX="-63" positionY="-18" width="128" height="164"/>
     </elements>
 </model>

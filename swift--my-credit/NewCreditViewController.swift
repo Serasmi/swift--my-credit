@@ -15,25 +15,80 @@ class NewCreditViewController: UIViewController {
     @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var rate: UITextField!
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var currencyButton: UIButton!
     
     @IBOutlet weak var payment: UILabel!
     @IBOutlet weak var overPayment: UILabel!
     
     var saveAction: UIAlertAction?
     
+    var paymentValue: Double = 0
+    var overPaymentValue: Double = 0
+    
+    var selectedCurrencyIndex = Constants.defaultCurrencyIndex
+    var selectedCurrency: String {
+        get {
+            Constants.currencies[selectedCurrencyIndex]
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        initCurrencyButton()
+        
         calculate()
     }
     
     @IBAction func calculate() {
-        let monthPayment = calcMonthPayment()
-        let fullOverPayment = calcOverPayment(perMonth: monthPayment)
+        paymentValue = calcMonthPayment()
+        overPaymentValue = calcOverPayment(perMonth: paymentValue)
         
-        payment.text = "\(Int(monthPayment)) ₽/month"
-        overPayment.text = "\(Int(fullOverPayment)) ₽"
+        payment.text = "\(Int(paymentValue)) \(selectedCurrency)/month"
+        overPayment.text = "\(Int(overPaymentValue)) \(selectedCurrency)"
+    }
+    
+    @IBAction func tapCurrency(_ sender: UIButton) {
+        let pickerWidth = UIScreen.main.bounds.width
+        let pickerHeight: CGFloat = 200
+        
+        let vc = UIViewController()
+        vc.preferredContentSize = CGSize(width: pickerWidth, height: pickerHeight)
+        
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight))
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        pickerView.selectRow(selectedCurrencyIndex, inComponent: 0, animated: false)
+        
+        vc.view.addSubview(pickerView)
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        pickerView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
+        pickerView.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor).isActive = true
+        
+        
+        let alertMessage = UIAlertController(title: "Select currency", message: nil, preferredStyle: .actionSheet)
+        
+        alertMessage.setValue(vc, forKey: "contentViewController")
+        
+        alertMessage.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertMessage.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
+            self.selectedCurrencyIndex = pickerView.selectedRow(inComponent: 0)
+            self.currencyButton.setTitle(self.selectedCurrency, for: .normal)
+        }))
+        
+        self.present(alertMessage, animated: true, completion: nil)
+    }
+    
+    func initCurrencyButton() {
+        currencyButton.backgroundColor = .clear
+        currencyButton.layer.cornerRadius = 5
+        currencyButton.layer.borderWidth = 1
+        currencyButton.layer.borderColor = UIColor.systemGray6.cgColor
+        currencyButton.setTitle(Constants.defaultCurrency, for: .normal)
     }
     
     func calcMonthPayment() -> Double {
@@ -81,10 +136,11 @@ class NewCreditViewController: UIViewController {
         
         newCreditItem.amount = Int64(amount.text ?? "0") ?? 0
         newCreditItem.createdAt = Date()
+        newCreditItem.currency = selectedCurrency
         newCreditItem.duration = Int64(duration.text ?? "0") ?? 0
         newCreditItem.id = UUID()
-        newCreditItem.overPayment = Float(overPayment.text ?? "0") ?? 0
-        newCreditItem.payment = Float(payment.text ?? "0") ?? 0
+        newCreditItem.overPayment = Float(overPaymentValue)
+        newCreditItem.payment = Float(paymentValue)
         newCreditItem.rate = Float(rate.text ?? "0") ?? 0
         newCreditItem.title = title
         
@@ -137,4 +193,20 @@ class NewCreditViewController: UIViewController {
     }
     */
 
+}
+
+extension NewCreditViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Constants.currencies.count
+    }
+}
+
+extension NewCreditViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Constants.currencies[row]
+    }
 }

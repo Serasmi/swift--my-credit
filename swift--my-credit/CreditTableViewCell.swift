@@ -111,10 +111,10 @@ class CreditTableViewCell: UITableViewCell {
     }
     
     func configure(with creditItem: CreditItem) {
-        amountLabel.text = "\(creditItem.amount) ₽"
+        amountLabel.text = "\(creditItem.amount) \(creditItem.currency ?? Constants.defaultCurrency)"
         rateLabel.text = "\(creditItem.rate)%"
         titleLabel.text = creditItem.title
-        paymentLabel.text = "\(creditItem.payment) ₽/month"
+        paymentLabel.text = "\(creditItem.payment) \(creditItem.currency ?? Constants.defaultCurrency)/month"
         durationLabel.text = "\(creditItem.duration)y"
     }
 

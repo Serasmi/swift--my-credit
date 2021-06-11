@@ -240,7 +240,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2gE-qt-DQG">
-                                <rect key="frame" x="16" y="60" width="382" height="467"/>
+                                <rect key="frame" x="16" y="60" width="382" height="515"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit calculation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQ6-kb-I91">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="23"/>
@@ -264,14 +264,19 @@
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12000000" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mp5-t7-JnW">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gN6-Rz-BQI">
                                                 <rect key="frame" x="0.0" y="22" width="382" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <connections>
-                                                    <action selector="calculate" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="VVM-j5-qP2"/>
-                                                </connections>
-                                            </textField>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12000000" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mp5-t7-JnW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <connections>
+                                                            <action selector="calculate" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="VVM-j5-qP2"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Q4B-af-3Wd" userLabel="Credit duration">
@@ -312,15 +317,45 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YNh-MD-br5" userLabel="Currency">
+                                        <rect key="frame" x="0.0" y="276" width="382" height="32"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFf-0d-Nsb" userLabel="Currency">
+                                                <rect key="frame" x="0.0" y="0.0" width="240.5" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQG-ks-ZA8">
+                                                <rect key="frame" x="245.5" y="0.0" width="136.5" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                <state key="normal" title="$">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapCurrency:" destination="D1k-Qy-nEo" eventType="touchUpInside" id="hBe-4O-ahM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="A7D-as-mMa" userLabel="Currency">
+                                        <rect key="frame" x="0.0" y="314" width="382" height="216"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSK-pO-Loa">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="216"/>
+                                            </pickerView>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DO-Kl-fgW" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="276" width="382" height="5"/>
+                                        <rect key="frame" x="0.0" y="324" width="382" height="5"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="IfM-R1-gqZ"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="31a-Ux-T7Q" userLabel="Monthly payment">
-                                        <rect key="frame" x="0.0" y="297" width="382" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="345" width="382" height="41.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1g-Xm-0Oc">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -337,7 +372,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vus-ii-MeN" userLabel="Over payment">
-                                        <rect key="frame" x="0.0" y="354.5" width="382" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="402.5" width="382" height="41.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Over payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIx-Z3-nQV">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -354,14 +389,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjq-tI-iZ8" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="412" width="382" height="5"/>
+                                        <rect key="frame" x="0.0" y="460" width="382" height="5"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="C9f-NR-6rn"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-dl-fj9">
-                                        <rect key="frame" x="0.0" y="433" width="382" height="34"/>
+                                        <rect key="frame" x="0.0" y="481" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
@@ -369,6 +404,14 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="TQG-ks-ZA8" firstAttribute="height" secondItem="RLv-j9-Dct" secondAttribute="height" multiplier="0.941176" id="Tsc-vx-rIY"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="A7D-as-mMa"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gv9-a2-fAb"/>
@@ -383,9 +426,11 @@
                     <tabBarItem key="tabBarItem" title="Calculate" image="doc.text" catalog="system" id="bKw-ee-BUD"/>
                     <connections>
                         <outlet property="amount" destination="Mp5-t7-JnW" id="IJf-aQ-L4m"/>
+                        <outlet property="currencyButton" destination="TQG-ks-ZA8" id="SyB-x2-JxK"/>
                         <outlet property="duration" destination="CiE-Vh-9Ip" id="RcS-Mb-Ami"/>
                         <outlet property="overPayment" destination="MGE-GF-WaS" id="ZGE-gJ-vr4"/>
                         <outlet property="payment" destination="1hj-4U-cu2" id="X9G-xh-m63"/>
+                        <outlet property="pickerView" destination="XSK-pO-Loa" id="XwO-NM-vdP"/>
                         <outlet property="rate" destination="RLv-j9-Dct" id="MGV-Dt-80S"/>
                     </connections>
                 </viewController>
@@ -426,6 +471,9 @@
         <image name="doc.text" catalog="system" width="115" height="128"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

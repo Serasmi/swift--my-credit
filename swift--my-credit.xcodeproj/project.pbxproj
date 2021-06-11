@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0236522669F9B000F96FAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0236512669F9B000F96FAD /* Constants.swift */; };
 		ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */; };
 		ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE46265A94E600BABCDC /* AppDelegate.swift */; };
 		ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE48265A94E600BABCDC /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED0236512669F9B000F96FAD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDetailsViewController.swift; sourceTree = "<group>"; };
 		ED55DE43265A94E600BABCDC /* swift--my-credit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift--my-credit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED55DE46265A94E600BABCDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				ED55DE62265A9C7600BABCDC /* AboutViewController.swift */,
 				EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */,
 				ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */,
+				ED0236512669F9B000F96FAD /* Constants.swift */,
 			);
 			path = "swift--my-credit";
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */,
 				EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */,
 				ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */,
+				ED0236522669F9B000F96FAD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
