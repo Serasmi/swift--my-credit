@@ -23,22 +23,11 @@ class NewCreditViewController: UIViewController {
     
     var saveAction: UIAlertAction?
     
-    var paymentValue: Double = 0
-    var overPaymentValue: Double = 0
-    
     var calculator: Calculator!
-    
-    var selectedCurrencyIndex = Constants.defaultCurrencyIndex
-    var selectedCurrency: String {
-        get {
-            Constants.currencies[selectedCurrencyIndex]
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         amount.accessibilityIdentifier = Constants.amountId
         duration.accessibilityIdentifier = Constants.durationId
         rate.accessibilityIdentifier = Constants.rateId
@@ -46,6 +35,27 @@ class NewCreditViewController: UIViewController {
         initData()
         
         initCurrencyButton()
+    }
+    
+    func initData() {
+        calculator = Calculator(amount: Constants.defaultAmount,
+                                currency: Constants.defaultCurrency,
+                                months: Constants.defaultDuration * 12,
+                                rate: Constants.defaultRate)
+        
+        amount.text = String(Constants.defaultAmount)
+        duration.text = String(Constants.defaultDuration)
+        rate.text = String(Constants.defaultRate)
+        
+        updatePayments()
+    }
+    
+    func initCurrencyButton() {
+        currencyButton.backgroundColor = .clear
+        currencyButton.layer.cornerRadius = 5
+        currencyButton.layer.borderWidth = 1
+        currencyButton.layer.borderColor = UIColor.systemGray6.cgColor
+        currencyButton.setTitle(Constants.defaultCurrency, for: .normal)
     }
     
     @IBAction func calculate(_ sender: UITextField) {
@@ -105,49 +115,6 @@ class NewCreditViewController: UIViewController {
         self.present(alertMessage, animated: true, completion: nil)
     }
     
-    func updatePayments() {
-        payment.text = calculator.formattedPayment
-        overPayment.text = calculator.formattedOverPayment
-    }
-    
-    func initData() {
-        calculator = Calculator(amount: Constants.defaultAmount,
-                                currency: Constants.defaultCurrency,
-                                months: Constants.defaultDuration * 12,
-                                rate: Constants.defaultRate)
-        
-        amount.text = String(Constants.defaultAmount)
-        duration.text = String(Constants.defaultDuration)
-        rate.text = String(Constants.defaultRate)
-        
-        updatePayments()
-    }
-    
-    func initCurrencyButton() {
-        currencyButton.backgroundColor = .clear
-        currencyButton.layer.cornerRadius = 5
-        currencyButton.layer.borderWidth = 1
-        currencyButton.layer.borderColor = UIColor.systemGray6.cgColor
-        currencyButton.setTitle(Constants.defaultCurrency, for: .normal)
-    }
-    
-    func saveCredit(with title: String) {
-        // todo: get data from Calculator model instead of UITextFields
-        let newCreditItem = CreditItem(context: context)
-        
-        newCreditItem.amount = Int64(amount.text ?? "0") ?? 0
-        newCreditItem.createdAt = Date()
-        newCreditItem.currency = selectedCurrency
-        newCreditItem.duration = Int64(duration.text ?? "0") ?? 0
-        newCreditItem.id = UUID()
-        newCreditItem.overPayment = Float(overPaymentValue)
-        newCreditItem.payment = Float(paymentValue)
-        newCreditItem.rate = Float(rate.text ?? "0") ?? 0
-        newCreditItem.title = title
-        
-        saveContext();
-    }
-    
     @IBAction func showAlert(_ sender: Any) {
         let alertMessage = UIAlertController(title: "Credit title", message: "Enter credit title and save", preferredStyle: .alert)
         
@@ -181,6 +148,27 @@ class NewCreditViewController: UIViewController {
         }
         
         super.touchesBegan(touches, with: event)
+    }
+    
+    func updatePayments() {
+        payment.text = calculator.formattedPayment
+        overPayment.text = calculator.formattedOverPayment
+    }
+    
+    func saveCredit(with title: String) {
+        let newCreditItem = CreditItem(context: context)
+        
+        newCreditItem.amount = Int64(calculator.amount)
+        newCreditItem.createdAt = Date()
+        newCreditItem.currency = calculator.currency
+        newCreditItem.duration = Int64(calculator.months)
+        newCreditItem.id = UUID()
+        newCreditItem.overPayment = Float(calculator.overPayment)
+        newCreditItem.payment = Float(calculator.payment)
+        newCreditItem.rate = Float(calculator.rate)
+        newCreditItem.title = title
+        
+        saveContext();
     }
 }
 

@@ -110,12 +110,21 @@ class CreditTableViewCell: UITableViewCell {
         contentView.addSubview(verticalStackView)
     }
     
+    func formatCurrency(from value: Double, with currencySymbol: String? = Constants.defaultCurrency) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = currencySymbol
+        formatter.locale = Locale(identifier: "ru")
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: NSNumber(value: value)) ?? "0"
+    }
+    
     func configure(with creditItem: CreditItem) {
-        amountLabel.text = "\(creditItem.amount) \(creditItem.currency ?? Constants.defaultCurrency)"
+        amountLabel.text = Double(creditItem.amount).formatAsCurrency(with: creditItem.currency)
         rateLabel.text = "\(creditItem.rate)%"
         titleLabel.text = creditItem.title
-        paymentLabel.text = "\(creditItem.payment) \(creditItem.currency ?? Constants.defaultCurrency)/month"
-        durationLabel.text = "\(creditItem.duration)y"
+        paymentLabel.text = "\(Double(creditItem.payment).formatAsCurrency(with: creditItem.currency))/month"
+        durationLabel.text = "\(creditItem.duration / 12)y"
     }
 
 }

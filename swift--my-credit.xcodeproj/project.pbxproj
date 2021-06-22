@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED0236522669F9B000F96FAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0236512669F9B000F96FAD /* Constants.swift */; };
+		ED3B626F2682598B001CB140 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3B626E2682598B001CB140 /* DoubleExtension.swift */; };
 		ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */; };
 		ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE46265A94E600BABCDC /* AppDelegate.swift */; };
 		ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE48265A94E600BABCDC /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		ED0236512669F9B000F96FAD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ED3B626E2682598B001CB140 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDetailsViewController.swift; sourceTree = "<group>"; };
 		ED55DE43265A94E600BABCDC /* swift--my-credit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift--my-credit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED55DE46265A94E600BABCDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED3B626D26825968001CB140 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED3B626E2682598B001CB140 /* DoubleExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		ED55DE3A265A94E600BABCDC = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 		ED55DE45265A94E600BABCDC /* swift--my-credit */ = {
 			isa = PBXGroup;
 			children = (
+				ED3B626D26825968001CB140 /* Extensions */,
 				EDE0EDD12679C157006F077D /* Model */,
 				ED55DE46265A94E600BABCDC /* AppDelegate.swift */,
 				ED55DE48265A94E600BABCDC /* SceneDelegate.swift */,
@@ -169,6 +180,7 @@
 				ED55DE51265A94E600BABCDC /* swift__my_credit.xcdatamodeld in Sources */,
 				ED55DE4B265A94E600BABCDC /* CreditsViewController.swift in Sources */,
 				ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */,
+				ED3B626F2682598B001CB140 /* DoubleExtension.swift in Sources */,
 				EDE0EDD32679C16F006F077D /* Calculator.swift in Sources */,
 				ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */,
 				ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */,
