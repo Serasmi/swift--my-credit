@@ -272,7 +272,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
-                                                            <action selector="calculate" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="VVM-j5-qP2"/>
+                                                            <action selector="calculate:" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="PSx-PB-24d"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -293,7 +293,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
-                                                    <action selector="calculate" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="0bt-JJ-srE"/>
+                                                    <action selector="calculate:" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="lUo-ks-RJH"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -312,7 +312,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
-                                                    <action selector="calculate" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="OOn-XZ-XHJ"/>
+                                                    <action selector="calculate:" destination="D1k-Qy-nEo" eventType="editingDidEnd" id="i5X-RY-Kqs"/>
                                                 </connections>
                                             </textField>
                                         </subviews>

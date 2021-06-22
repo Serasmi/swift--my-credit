@@ -11,7 +11,7 @@ class NewCreditViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let saveContext = (UIApplication.shared.delegate as! AppDelegate).saveContext
-
+    
     @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var rate: UITextField!
@@ -26,6 +26,8 @@ class NewCreditViewController: UIViewController {
     var paymentValue: Double = 0
     var overPaymentValue: Double = 0
     
+    var calculator: Calculator!
+    
     var selectedCurrencyIndex = Constants.defaultCurrencyIndex
     var selectedCurrency: String {
         get {
@@ -35,19 +37,33 @@ class NewCreditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        initCurrencyButton()
         
-        calculate()
+        // Do any additional setup after loading the view.
+        amount.accessibilityIdentifier = Constants.amountId
+        duration.accessibilityIdentifier = Constants.durationId
+        rate.accessibilityIdentifier = Constants.rateId
+        
+        initData()
+        
+        initCurrencyButton()
     }
     
-    @IBAction func calculate() {
-        paymentValue = calcMonthPayment()
-        overPaymentValue = calcOverPayment(perMonth: paymentValue)
+    @IBAction func calculate(_ sender: UITextField) {
+        // todo: split func => changeAmount, changeRate, changeDuration or switch-case
+        let senderId: String = sender.accessibilityIdentifier ?? ""
         
-        payment.text = "\(Int(paymentValue)) \(selectedCurrency)/month"
-        overPayment.text = "\(Int(overPaymentValue)) \(selectedCurrency)"
+        switch senderId {
+        case Constants.amountId:
+            calculator.amount = Double(sender.text ?? "0") ?? 0
+        case Constants.durationId:
+            calculator.months = (Int(sender.text ?? "0") ?? 0) * 12
+        case Constants.rateId:
+            calculator.rate = Double(sender.text ?? "0") ?? 0
+        default:
+            fatalError("Unknown field identifier")
+        }
+        
+        updatePayments()
     }
     
     @IBAction func tapCurrency(_ sender: UIButton) {
@@ -61,7 +77,8 @@ class NewCreditViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        pickerView.selectRow(selectedCurrencyIndex, inComponent: 0, animated: false)
+        let selectedRow = Constants.currencyIndex(of: calculator.currency)
+        pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
         
         vc.view.addSubview(pickerView)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,11 +93,34 @@ class NewCreditViewController: UIViewController {
         
         alertMessage.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alertMessage.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
-            self.selectedCurrencyIndex = pickerView.selectedRow(inComponent: 0)
-            self.currencyButton.setTitle(self.selectedCurrency, for: .normal)
+            let newSelectedRow = pickerView.selectedRow(inComponent: 0)
+            let newCurrencyValue = Constants.currencies[newSelectedRow]
+            
+            self.calculator.currency = newCurrencyValue
+            self.currencyButton.setTitle(newCurrencyValue, for: .normal)
+            
+            self.updatePayments()
         }))
         
         self.present(alertMessage, animated: true, completion: nil)
+    }
+    
+    func updatePayments() {
+        payment.text = calculator.formattedPayment
+        overPayment.text = calculator.formattedOverPayment
+    }
+    
+    func initData() {
+        calculator = Calculator(amount: Constants.defaultAmount,
+                                currency: Constants.defaultCurrency,
+                                months: Constants.defaultDuration * 12,
+                                rate: Constants.defaultRate)
+        
+        amount.text = String(Constants.defaultAmount)
+        duration.text = String(Constants.defaultDuration)
+        rate.text = String(Constants.defaultRate)
+        
+        updatePayments()
     }
     
     func initCurrencyButton() {
@@ -91,47 +131,8 @@ class NewCreditViewController: UIViewController {
         currencyButton.setTitle(Constants.defaultCurrency, for: .normal)
     }
     
-    func calcMonthPayment() -> Double {
-        guard let creditAmount = Double(amount.text!),
-              var mD = Double(duration.text!)
-        else {
-            return 0
-        }
-        
-        if (mD == 0) { return 0 }
-        
-        // converts to months
-        mD *= 12
-        
-        guard let creditRate = Double(rate.text!) else {
-            return 0
-        }
-        
-        if (creditRate == 0) { return 0 }
-        
-        // month percents
-        let mPs = creditRate / 100 / 12
-        
-        // coeffitient
-        let k: Double = mPs * pow(1 + mPs, mD) / (pow(1 + mPs, mD) - 1)
-
-        return creditAmount * k
-    }
-    
-    func calcOverPayment(perMonth: Double) -> Double {
-        guard let creditAmount = Double(amount.text!),
-              var mD = Double(duration.text!)
-        else {
-            return 0
-        }
-        
-        // converts to months
-        mD *= 12
-        
-        return mD * perMonth - creditAmount;
-    }
-    
     func saveCredit(with title: String) {
+        // todo: get data from Calculator model instead of UITextFields
         let newCreditItem = CreditItem(context: context)
         
         newCreditItem.amount = Int64(amount.text ?? "0") ?? 0
@@ -181,18 +182,6 @@ class NewCreditViewController: UIViewController {
         
         super.touchesBegan(touches, with: event)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension NewCreditViewController: UIPickerViewDataSource {

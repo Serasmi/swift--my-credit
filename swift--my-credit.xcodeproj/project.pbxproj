@@ -19,6 +19,7 @@
 		ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */; };
 		ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE62265A9C7600BABCDC /* AboutViewController.swift */; };
 		EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */; };
+		EDE0EDD32679C16F006F077D /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0EDD22679C16F006F077D /* Calculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditViewController.swift; sourceTree = "<group>"; };
 		ED55DE62265A9C7600BABCDC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
+		EDE0EDD22679C16F006F077D /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		ED55DE45265A94E600BABCDC /* swift--my-credit */ = {
 			isa = PBXGroup;
 			children = (
+				EDE0EDD12679C157006F077D /* Model */,
 				ED55DE46265A94E600BABCDC /* AppDelegate.swift */,
 				ED55DE48265A94E600BABCDC /* SceneDelegate.swift */,
 				ED55DE4A265A94E600BABCDC /* CreditsViewController.swift */,
@@ -80,9 +83,17 @@
 				ED55DE62265A9C7600BABCDC /* AboutViewController.swift */,
 				EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */,
 				ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */,
-				ED0236512669F9B000F96FAD /* Constants.swift */,
 			);
 			path = "swift--my-credit";
+			sourceTree = "<group>";
+		};
+		EDE0EDD12679C157006F077D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EDE0EDD22679C16F006F077D /* Calculator.swift */,
+				ED0236512669F9B000F96FAD /* Constants.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +169,7 @@
 				ED55DE51265A94E600BABCDC /* swift__my_credit.xcdatamodeld in Sources */,
 				ED55DE4B265A94E600BABCDC /* CreditsViewController.swift in Sources */,
 				ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */,
+				EDE0EDD32679C16F006F077D /* Calculator.swift in Sources */,
 				ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */,
 				ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */,
 				ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */,
