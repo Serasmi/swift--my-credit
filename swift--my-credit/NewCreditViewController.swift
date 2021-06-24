@@ -43,7 +43,7 @@ class NewCreditViewController: UIViewController {
                                 months: Constants.defaultDuration * 12,
                                 rate: Constants.defaultRate)
         
-        amount.text = String(Constants.defaultAmount)
+        amount.text = String(format: "%.0f", Constants.defaultAmount)
         duration.text = String(Constants.defaultDuration)
         rate.text = String(Constants.defaultRate)
         

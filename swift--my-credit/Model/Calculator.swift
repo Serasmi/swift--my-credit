@@ -23,11 +23,11 @@ struct Calculator {
     var overPayment: Double = 0
     
     var formattedPayment: String {
-        "\(String(format: "%.2f",  payment)) \(currency)/month"
+        "\(payment.formatAsCurrency(with: currency))/month"
     }
     
     var formattedOverPayment: String {
-        "\(String(format: "%.2f",  overPayment)) \(currency)"
+        "\(overPayment.formatAsCurrency(with: currency))"
     }
     
     init(amount: Double, currency: String, months: Int, rate: Double) {

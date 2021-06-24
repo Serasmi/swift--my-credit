@@ -26,11 +26,12 @@ class CreditDetailsViewController: UIViewController {
     
     private func initCredit() {
         titleView.text = creditItem.title
-        amountView.text = "\(creditItem.amount) \(creditItem.currency ?? Constants.defaultCurrency)"
+//        amountView.text = "\(creditItem.amount) \(creditItem.currency ?? Constants.defaultCurrency)"
+        amountView.text = "\(Double(creditItem.amount).formatAsCurrency(with: creditItem.currency, fractionDigits: 0))"
         durationView.text = "\(creditItem.duration / 12) year(s)"
         rateView.text = "\(creditItem.rate)%"
-        paymentView.text = "\(creditItem.payment) \(creditItem.currency ?? Constants.defaultCurrency)/month"
-        overPaymentView.text = "\(creditItem.overPayment) \(creditItem.currency ?? Constants.defaultCurrency)"
+        paymentView.text = "\(Double(creditItem.payment).formatAsCurrency(with: creditItem.currency))/month"
+        overPaymentView.text = "\(Double(creditItem.overPayment).formatAsCurrency(with: creditItem.currency))"
     }
     
 

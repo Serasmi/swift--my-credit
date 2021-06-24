@@ -8,12 +8,12 @@
 import Foundation
 
 extension Double {
-    func formatAsCurrency(with currencySymbol: String? = Constants.defaultCurrency) -> String {
+    func formatAsCurrency(with currencySymbol: String? = Constants.defaultCurrency, fractionDigits: Int = 2) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.currencySymbol = currencySymbol
+        formatter.currencySymbol = currencySymbol ?? Constants.defaultCurrency
         formatter.locale = Locale(identifier: "ru")
-        formatter.maximumFractionDigits = 2
+        formatter.maximumFractionDigits = fractionDigits
         return formatter.string(from: NSNumber(value: self)) ?? "0"
     }
 }
