@@ -8,6 +8,7 @@
 import Foundation
 
 extension Double {
+    
     func formatAsCurrency(with currencySymbol: String? = Constants.defaultCurrency, fractionDigits: Int = 2) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -16,4 +17,5 @@ extension Double {
         formatter.maximumFractionDigits = fractionDigits
         return formatter.string(from: NSNumber(value: self)) ?? "0"
     }
+    
 }

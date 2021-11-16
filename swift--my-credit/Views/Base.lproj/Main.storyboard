@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z8E-Ie-onD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pyl-Np-Ior">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,14 +37,14 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreditTableViewCell" id="fPa-v8-z3Q" customClass="CreditTableViewCell" customModule="swift__my_credit" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fPa-v8-z3Q" id="msf-CH-8W2">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <segue destination="Y4E-2O-wko" kind="presentation" identifier="showCreditDetails" id="261-pU-8P2"/>
+                                                    <segue destination="Bj5-cD-18l" kind="presentation" identifier="showCreditDetails" id="261-pU-8P2"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -79,23 +80,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="j0r-J9-2Rb">
-                                <rect key="frame" x="16" y="16" width="382" height="357.5"/>
+                                <rect key="frame" x="16" y="72" width="382" height="297.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFk-Ny-kk8">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="23"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-Ka-jfK" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="39" width="382" height="5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="5" id="p8G-rc-XPu"/>
-                                        </constraints>
-                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xPw-3H-oNo" userLabel="Credit amount">
-                                        <rect key="frame" x="0.0" y="60" width="382" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="42.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ary-Uy-JmY">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -112,7 +100,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-Rg-Igk" userLabel="Credit duration">
-                                        <rect key="frame" x="0.0" y="118.5" width="382" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="58.5" width="382" height="42.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKa-gh-PrE">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -129,7 +117,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-oC-FUE" userLabel="Credit rate">
-                                        <rect key="frame" x="0.0" y="177" width="382" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="117" width="382" height="42.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgU-rt-1ca" userLabel="Credit rate">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -146,14 +134,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgo-nM-fEN" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="235.5" width="382" height="5"/>
+                                        <rect key="frame" x="0.0" y="175.5" width="382" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="Jei-PP-W1a"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JWz-Vk-QxF" userLabel="Monthly payment">
-                                        <rect key="frame" x="0.0" y="256.5" width="382" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="196.5" width="382" height="42.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbE-5b-2Ia" userLabel="Credit rate">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -170,7 +158,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PID-pt-RcY" userLabel="Over payment">
-                                        <rect key="frame" x="0.0" y="315" width="382" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="255" width="382" height="42.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Over payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UO6-Y1-MxW" userLabel="Credit rate">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -198,18 +186,18 @@
                             <constraint firstItem="ibi-zx-uin" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="j0r-J9-2Rb" secondAttribute="bottom" constant="16" id="upv-fY-ViL"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dsQ-eP-9oH"/>
                     <connections>
                         <outlet property="amountView" destination="x61-Xo-Slh" id="kyO-kK-eXg"/>
                         <outlet property="durationView" destination="ccb-SS-Td5" id="zT2-dz-drW"/>
                         <outlet property="overPaymentView" destination="9Jx-Sz-Jgq" id="wf8-92-rN4"/>
                         <outlet property="paymentView" destination="6Ot-VF-uro" id="cwN-Gl-h4d"/>
                         <outlet property="rateView" destination="qJ4-xo-ge2" id="x9t-0G-2P3"/>
-                        <outlet property="titleView" destination="kFk-Ny-kk8" id="oJZ-8C-HZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIL-D4-iEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736" y="1503"/>
+            <point key="canvasLocation" x="-736" y="2197"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4Of-Sq-uWl">
@@ -242,7 +230,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2gE-qt-DQG">
                                 <rect key="frame" x="16" y="60" width="382" height="515"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit calculation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQ6-kb-I91">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit calculator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQ6-kb-I91">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="23"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
@@ -465,6 +453,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2E-4T-bGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="786" y="781"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ghc-8A-V4P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bj5-cD-18l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1RK-l8-DfC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y4E-2O-wko" kind="relationship" relationship="rootViewController" id="DRc-2A-fRy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxg-uQ-kmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-736.23188405797111" y="1502.6785714285713"/>
+        </scene>
+        <!--TestVC-->
+        <scene sceneID="BIh-vQ-bQC">
+            <objects>
+                <viewController id="pyl-Np-Ior" customClass="TestVC" customModule="swift__my_credit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wqO-Ig-fs8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ZYa-jM-D3J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSB-IG-bhz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="88"/>
         </scene>
     </scenes>
     <resources>

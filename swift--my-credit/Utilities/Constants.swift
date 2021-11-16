@@ -5,7 +5,7 @@
 //  Created by Сергей Смирнов on 04.06.2021.
 //
 
-import Foundation
+import UIKit
 
 
 class Constants {
@@ -32,4 +32,14 @@ class Constants {
     static let durationId = "durationId"
     
     static let rateId = "rateId"
+    
+    static let padding: CGFloat = 16
+    
+    // MARK: - slider constants
+    
+    static let sliderStep: Float = 1
+    static let sliderColor: UIColor = .systemGreen
+    static let sliderMinValue: Float = 0
+    static let sliderMaxValue: Float = 100
+    
 }

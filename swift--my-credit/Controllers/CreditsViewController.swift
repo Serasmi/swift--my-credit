@@ -51,7 +51,8 @@ class CreditsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCreditDetails" {
-            guard let vc = segue.destination as? CreditDetailsViewController,
+            guard let navVC = segue.destination as? UINavigationController,
+                  let vc = navVC.viewControllers.first as? CreditDetailsViewController,
                   let selectedCredit = tableView.indexPathForSelectedRow?.row
             else {
                 return

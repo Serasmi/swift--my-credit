@@ -10,7 +10,6 @@ import UIKit
 class CreditDetailsViewController: UIViewController {
     var creditItem: CreditItem!
 
-    @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var amountView: UILabel!
     @IBOutlet weak var durationView: UILabel!
     @IBOutlet weak var rateView: UILabel!
@@ -20,12 +19,17 @@ class CreditDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        initUI()
         initCredit()
     }
     
+    private func initUI() {
+        navigationItem.title = creditItem.title
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(tapDelete))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tapEdit))
+    }
+    
     private func initCredit() {
-        titleView.text = creditItem.title
 //        amountView.text = "\(creditItem.amount) \(creditItem.currency ?? Constants.defaultCurrency)"
         amountView.text = "\(Double(creditItem.amount).formatAsCurrency(with: creditItem.currency, fractionDigits: 0))"
         durationView.text = "\(creditItem.duration / 12) year(s)"
@@ -34,6 +38,13 @@ class CreditDetailsViewController: UIViewController {
         overPaymentView.text = "\(Double(creditItem.overPayment).formatAsCurrency(with: creditItem.currency))"
     }
     
+    @objc func tapEdit() {
+        print("Edit credit tapped")
+    }
+    
+    @objc func tapDelete() {
+        print("Delete credit tapped")
+    }
 
     /*
     // MARK: - Navigation
