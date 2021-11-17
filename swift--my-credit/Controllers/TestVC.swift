@@ -7,23 +7,46 @@
 
 import UIKit
 
+fileprivate struct Defaults {
+    static let amount: Float = 1_000_000
+    static let amountMin: Float = 1_000
+    static let amountMax: Float = 10_000_000
+}
+
 class TestVC: UIViewController {
     
-    private let amountSlider = MCSlider(value: 1_000_000,
-                                        minValue: 1_000,
-                                        maxValue: 10_000_000,
+    private let amountInput = MCInput(label: "Сумма кредита",
+                                      value: Defaults.amount,
+                                      minValue: Defaults.amountMin,
+                                      maxValue: Defaults.amountMax)
+    
+    private let amountSlider = MCSlider(value: Defaults.amount,
+                                        minValue: Defaults.amountMin,
+                                        maxValue: Defaults.amountMax,
                                         step: 1_000,
                                         minSuffix: "$",
                                         maxSuffix: "$")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         amountSlider.delegate = self
         
+        view.addSubview(amountInput)
         view.addSubview(amountSlider)
-
+        
+        configureInput()
         configureSlider()
+    }
+    
+    private func configureInput() {
+        NSLayoutConstraint.activate([
+            amountInput.bottomAnchor.constraint(equalTo: amountSlider.topAnchor, constant: -Constants.padding),
+            amountInput.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            amountInput.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding)
+        ])
+        
+        amountInput.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func configureSlider() {
@@ -32,15 +55,15 @@ class TestVC: UIViewController {
             amountSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
             amountSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding)
         ])
-
+        
         amountSlider.translatesAutoresizingMaskIntoConstraints = false
     }
-
+    
 }
 
 extension TestVC: MCSliderDelegate {
     
     func slider(_ slider: UISlider, value: Float) {
-        print("slider value: \(value)")
+        amountInput.value = value
     }
 }

@@ -23,6 +23,7 @@
 		EDB0653F274426BF0053A0E1 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB0653E274426BF0053A0E1 /* TestVC.swift */; };
 		EDB065452744297A0053A0E1 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB065442744297A0053A0E1 /* View+Ext.swift */; };
 		EDB0654727442FB10053A0E1 /* Float+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB0654627442FB10053A0E1 /* Float+Ext.swift */; };
+		EDB0654927458BBA0053A0E1 /* MCInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB0654827458BBA0053A0E1 /* MCInput.swift */; };
 		EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */; };
 		EDE0EDD32679C16F006F077D /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0EDD22679C16F006F077D /* Calculator.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		EDB0653E274426BF0053A0E1 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		EDB065442744297A0053A0E1 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		EDB0654627442FB10053A0E1 /* Float+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Ext.swift"; sourceTree = "<group>"; };
+		EDB0654827458BBA0053A0E1 /* MCInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCInput.swift; sourceTree = "<group>"; };
 		EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		EDE0EDD22679C16F006F077D /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 				ED55DE4C265A94E600BABCDC /* Main.storyboard */,
 				ED55DE54265A94E700BABCDC /* LaunchScreen.storyboard */,
 				EDB0653C274424060053A0E1 /* MCSlider.swift */,
+				EDB0654827458BBA0053A0E1 /* MCInput.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				ED3B626F2682598B001CB140 /* Double+Ext.swift in Sources */,
 				EDE0EDD32679C16F006F077D /* Calculator.swift in Sources */,
 				ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */,
+				EDB0654927458BBA0053A0E1 /* MCInput.swift in Sources */,
 				ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */,
 				EDB0653F274426BF0053A0E1 /* TestVC.swift in Sources */,
 				ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */,

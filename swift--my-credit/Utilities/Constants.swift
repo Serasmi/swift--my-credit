@@ -35,6 +35,13 @@ class Constants {
     
     static let padding: CGFloat = 16
     
+    // MARK: - input constants
+    
+    static let inputMinValue: Float = 0
+    static let inputMaxValue: Float = 10_000
+    static let inputCornerRadius: CGFloat = 8
+    static let paddingInput: CGFloat = 12
+    
     // MARK: - slider constants
     
     static let sliderStep: Float = 1
