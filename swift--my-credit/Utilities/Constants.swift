@@ -8,7 +8,7 @@
 import UIKit
 
 
-class Constants {
+struct Constants {
     static let currencies = ["₽", "$", "€", "£", "¥"]
     
     static func currencyIndex(of currency: String) -> Int {
@@ -21,13 +21,17 @@ class Constants {
         Constants.currencyIndex(of: Constants.defaultCurrency)
     }
     
-    static let defaultAmount = 12_000_000.0
+    // MARK: - amount constants
+    static let amount: Float = 1_000_000
+    static let amountMin: Float = 1_000
+    static let amountMax: Float = 10_000_000
+    static let amountStep: Float = 1_000
+    static let amountId = "amountId"
+    static let amountLabel = "Credit amount"
     
     static let defaultDuration = 20
     
     static let defaultRate = 9.6
-    
-    static let amountId = "amountId"
     
     static let durationId = "durationId"
     

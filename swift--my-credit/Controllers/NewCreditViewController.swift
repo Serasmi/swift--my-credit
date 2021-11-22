@@ -12,6 +12,8 @@ class NewCreditViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let saveContext = (UIApplication.shared.delegate as! AppDelegate).saveContext
     
+    @IBOutlet weak var mainStackView: UIStackView!
+    
     @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var rate: UITextField!
@@ -25,8 +27,22 @@ class NewCreditViewController: UIViewController {
     
     var calculator: Calculator!
     
+    private var amountInput = MCInput(label: Constants.amountLabel,
+                                      value: Constants.amount,
+                                      minValue: Constants.amountMin,
+                                      maxValue: Constants.amountMax)
+    
+    private let amountSlider = MCSlider(value: Constants.amount,
+                                        minValue: Constants.amountMin,
+                                        maxValue: Constants.amountMax,
+                                        step: Constants.amountStep,
+                                        minSuffix: Constants.defaultCurrency,
+                                        maxSuffix: Constants.defaultCurrency)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainStackView.insertArrangedSubviews(amountInput, amountSlider, at: 2)
         
         amount.accessibilityIdentifier = Constants.amountId
         duration.accessibilityIdentifier = Constants.durationId
@@ -34,16 +50,22 @@ class NewCreditViewController: UIViewController {
         
         initData()
         
+        configureAmountInput()
+        
         initCurrencyButton()
     }
     
+    private func configureAmountInput() {
+        
+    }
+    
     func initData() {
-        calculator = Calculator(amount: Constants.defaultAmount,
+        calculator = Calculator(amount: Double(Constants.amount),
                                 currency: Constants.defaultCurrency,
                                 months: Constants.defaultDuration * 12,
                                 rate: Constants.defaultRate)
         
-        amount.text = String(format: "%.0f", Constants.defaultAmount)
+        amount.text = String(format: "%.0f", Constants.amount)
         duration.text = String(Constants.defaultDuration)
         rate.text = String(Constants.defaultRate)
         

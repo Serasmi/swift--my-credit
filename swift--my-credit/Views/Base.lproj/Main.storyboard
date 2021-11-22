@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pyl-Np-Ior">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z8E-Ie-onD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -202,7 +202,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="4Of-Sq-uWl">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Z8E-Ie-onD" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Z8E-Ie-onD" customClass="TabBarController" customModule="swift__my_credit" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x7Y-g6-VLe">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -416,6 +416,7 @@
                         <outlet property="amount" destination="Mp5-t7-JnW" id="IJf-aQ-L4m"/>
                         <outlet property="currencyButton" destination="TQG-ks-ZA8" id="SyB-x2-JxK"/>
                         <outlet property="duration" destination="CiE-Vh-9Ip" id="RcS-Mb-Ami"/>
+                        <outlet property="mainStackView" destination="2gE-qt-DQG" id="cal-kU-Jmd"/>
                         <outlet property="overPayment" destination="MGE-GF-WaS" id="ZGE-gJ-vr4"/>
                         <outlet property="payment" destination="1hj-4U-cu2" id="X9G-xh-m63"/>
                         <outlet property="pickerView" destination="XSK-pO-Loa" id="XwO-NM-vdP"/>
