@@ -64,6 +64,6 @@ class TestVC: UIViewController {
 extension TestVC: MCSliderDelegate {
     
     func slider(_ slider: UISlider, value: Float) {
-        amountInput.value = value
+        amountInput.setValue(with: value)
     }
 }

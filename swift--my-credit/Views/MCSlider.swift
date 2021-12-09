@@ -13,11 +13,15 @@ protocol MCSliderDelegate: AnyObject {
 
 class MCSlider: UIView {
     
+    typealias Listener = (Float) -> Void
+    
+    private var listener: Listener?
+    
     private let slider = UISlider()
     private let minLabel = UILabel()
     private let maxLabel = UILabel()
     
-    private (set) var step: Float = Constants.sliderStep
+    private(set) var step: Float = Constants.sliderStep
     
     public weak var delegate: MCSliderDelegate?
     
@@ -90,6 +94,19 @@ class MCSlider: UIView {
         
         sender.value = roundedValue
         self.delegate?.slider(sender, value: roundedValue)
+        self.listener?(roundedValue)
+    }
+    
+    func bind(listener: Listener?) {
+        self.listener = listener
+        listener?(slider.value)
+    }
+    
+    func setValue(with value: Float) {
+        if (value != slider.value) {
+            slider.value = value
+            listener?(value)
+        }
     }
 }
 

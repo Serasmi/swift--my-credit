@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED0236522669F9B000F96FAD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0236512669F9B000F96FAD /* Constants.swift */; };
+		ED19F00E2761D1AE0056F85C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED19F00D2761D1AE0056F85C /* Box.swift */; };
 		ED3B626F2682598B001CB140 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3B626E2682598B001CB140 /* Double+Ext.swift */; };
 		ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */; };
 		ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE46265A94E600BABCDC /* AppDelegate.swift */; };
@@ -27,11 +28,12 @@
 		EDC2B261274C272D00DA4DB4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2B260274C272D00DA4DB4 /* TabBarController.swift */; };
 		EDC2B263274C2C6000DA4DB4 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2B262274C2C6000DA4DB4 /* UIStackView+Ext.swift */; };
 		EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */; };
-		EDE0EDD32679C16F006F077D /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0EDD22679C16F006F077D /* Calculator.swift */; };
+		EDE0EDD32679C16F006F077D /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0EDD22679C16F006F077D /* CalculatorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED0236512669F9B000F96FAD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ED19F00D2761D1AE0056F85C /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		ED3B626E2682598B001CB140 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		ED40B6BE26674E5D00D82624 /* CreditDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDetailsViewController.swift; sourceTree = "<group>"; };
 		ED55DE43265A94E600BABCDC /* swift--my-credit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift--my-credit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +55,7 @@
 		EDC2B260274C272D00DA4DB4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EDC2B262274C2C6000DA4DB4 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
-		EDE0EDD22679C16F006F077D /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		EDE0EDD22679C16F006F077D /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED19F00B2761CD240056F85C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EDE0EDD22679C16F006F077D /* CalculatorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ED19F00C2761D1A40056F85C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ED19F00D2761D1AE0056F85C /* Box.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		ED3B626D26825968001CB140 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,10 +115,12 @@
 		ED55DE45265A94E600BABCDC /* swift--my-credit */ = {
 			isa = PBXGroup;
 			children = (
+				ED19F00C2761D1A40056F85C /* Helpers */,
 				EDB06540274427980053A0E1 /* Utilities */,
 				EDAB0B4726859D63009FAA40 /* Controllers */,
 				ED3B626D26825968001CB140 /* Extensions */,
 				EDE0EDD12679C157006F077D /* Model */,
+				ED19F00B2761CD240056F85C /* ViewModel */,
 				EDAB0B4826859DA6009FAA40 /* Views */,
 				ED55DE46265A94E600BABCDC /* AppDelegate.swift */,
 				ED55DE48265A94E600BABCDC /* SceneDelegate.swift */,
@@ -146,7 +166,6 @@
 		EDE0EDD12679C157006F077D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EDE0EDD22679C16F006F077D /* Calculator.swift */,
 				ED55DE4F265A94E600BABCDC /* swift__my_credit.xcdatamodeld */,
 			);
 			path = Model;
@@ -224,12 +243,13 @@
 			files = (
 				EDB065452744297A0053A0E1 /* UIView+Ext.swift in Sources */,
 				EDB0653D274424060053A0E1 /* MCSlider.swift in Sources */,
+				ED19F00E2761D1AE0056F85C /* Box.swift in Sources */,
 				ED55DE51265A94E600BABCDC /* swift__my_credit.xcdatamodeld in Sources */,
 				ED55DE4B265A94E600BABCDC /* CreditsViewController.swift in Sources */,
 				ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */,
 				ED3B626F2682598B001CB140 /* Double+Ext.swift in Sources */,
 				EDC2B261274C272D00DA4DB4 /* TabBarController.swift in Sources */,
-				EDE0EDD32679C16F006F077D /* Calculator.swift in Sources */,
+				EDE0EDD32679C16F006F077D /* CalculatorViewModel.swift in Sources */,
 				ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */,
 				EDB0654927458BBA0053A0E1 /* MCInput.swift in Sources */,
 				ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */,

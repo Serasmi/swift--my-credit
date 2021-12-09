@@ -8,12 +8,10 @@
 import UIKit
 
 class MCInput: UIView {
-
-    var value: Float = 0 {
-        didSet {
-            textField.text = value.round()
-        }
-    }
+    
+    typealias Listener = (Float) -> Void
+    
+    private var listener: Listener?
     
     private let label = UILabel()
     private let textField = UITextField(frame: .zero)
@@ -40,9 +38,7 @@ class MCInput: UIView {
         self.init(frame: .zero)
         
         self.label.text = label
-        
-        self.value = value
-        textField.text = value.round()
+        setValue(with: value)
     }
     
     private func configureLabel() {
@@ -77,5 +73,30 @@ class MCInput: UIView {
         
         layer.cornerRadius = Constants.inputCornerRadius
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    private func changeValue() {
+        
+        // TODO: implement logic and call method
+        
+//        let roundedValue = round(sender.value / step) * step
+//
+//        sender.value = roundedValue
+//        self.delegate?.slider(sender, value: roundedValue)
+//        self.listener?(roundedValue)
+    }
+    
+    func bind(listener: Listener?) {
+        self.listener = listener
+        listener?(Float(textField.text ?? "0") ?? 0)
+    }
+    
+    func setValue(with value: Float, precision: UInt = 0) {
+        let newValue = value.round(to: precision)
+        
+        if (newValue != textField.text) {
+            textField.text = newValue
+            listener?(value)
+        }
     }
 }

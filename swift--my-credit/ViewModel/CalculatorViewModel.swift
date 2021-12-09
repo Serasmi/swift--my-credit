@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Calculator {
-    var amount: Double {
+class CalculatorViewModel {
+    private(set) var amount: Box<Double> {
         didSet { calculate() }
     }
     var currency: String
@@ -31,7 +31,7 @@ struct Calculator {
     }
     
     init(amount: Double, currency: String, months: Int, rate: Double) {
-        self.amount = amount
+        self.amount = Box(amount)
         self.currency = currency
         self.months = months
         self.rate = rate
@@ -39,7 +39,13 @@ struct Calculator {
         calculate()
     }
     
-    mutating func calculate() {
+    func setAmount(with value: Double) {
+        if (self.amount.value != value) {
+            self.amount.value = value
+        }
+    }
+    
+    func calculate() {
         guard self.months != 0, rate != 0 else { return }
         
         let months: Double = Double(months)
@@ -49,8 +55,8 @@ struct Calculator {
         
         let coef = mPs * pow(1 + mPs, months) / (pow(1 + mPs, months) - 1)
         
-        payment = amount * coef
-        overPayment = months * payment - amount
+        payment = amount.value * coef
+        overPayment = months * payment - amount.value
     }
 }
 

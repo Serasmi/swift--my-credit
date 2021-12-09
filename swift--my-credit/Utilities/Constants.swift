@@ -26,7 +26,6 @@ struct Constants {
     static let amountMin: Float = 1_000
     static let amountMax: Float = 10_000_000
     static let amountStep: Float = 1_000
-    static let amountId = "amountId"
     static let amountLabel = "Credit amount"
     
     static let defaultDuration = 20

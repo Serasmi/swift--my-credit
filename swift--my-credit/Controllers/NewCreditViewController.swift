@@ -14,7 +14,6 @@ class NewCreditViewController: UIViewController {
     
     @IBOutlet weak var mainStackView: UIStackView!
     
-    @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var rate: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -25,7 +24,7 @@ class NewCreditViewController: UIViewController {
     
     var saveAction: UIAlertAction?
     
-    var calculator: Calculator!
+    var calculatorViewModel: CalculatorViewModel!
     
     private var amountInput = MCInput(label: Constants.amountLabel,
                                       value: Constants.amount,
@@ -44,7 +43,6 @@ class NewCreditViewController: UIViewController {
         
         mainStackView.insertArrangedSubviews(amountInput, amountSlider, at: 2)
         
-        amount.accessibilityIdentifier = Constants.amountId
         duration.accessibilityIdentifier = Constants.durationId
         rate.accessibilityIdentifier = Constants.rateId
         
@@ -53,6 +51,8 @@ class NewCreditViewController: UIViewController {
         configureAmountInput()
         
         initCurrencyButton()
+        
+        boundListeners()
     }
     
     private func configureAmountInput() {
@@ -60,12 +60,12 @@ class NewCreditViewController: UIViewController {
     }
     
     func initData() {
-        calculator = Calculator(amount: Double(Constants.amount),
-                                currency: Constants.defaultCurrency,
-                                months: Constants.defaultDuration * 12,
-                                rate: Constants.defaultRate)
+        calculatorViewModel = CalculatorViewModel(
+            amount: Double(Constants.amount),
+            currency: Constants.defaultCurrency,
+            months: Constants.defaultDuration * 12,
+            rate: Constants.defaultRate)
         
-        amount.text = String(format: "%.0f", Constants.amount)
         duration.text = String(Constants.defaultDuration)
         rate.text = String(Constants.defaultRate)
         
@@ -80,17 +80,30 @@ class NewCreditViewController: UIViewController {
         currencyButton.setTitle(Constants.defaultCurrency, for: .normal)
     }
     
+    private func boundListeners() {
+        calculatorViewModel.amount.bind { [unowned self] in
+            self.amountInput.setValue(with: Float($0))
+            self.amountSlider.setValue(with: Float($0))
+        }
+        
+        amountSlider.bind { [unowned self] in
+            self.calculatorViewModel.setAmount(with: Double($0))
+        }
+        
+        amountInput.bind { [unowned self] in
+            self.calculatorViewModel.setAmount(with: Double($0))
+        }
+    }
+    
     @IBAction func calculate(_ sender: UITextField) {
         // todo: split func => changeAmount, changeRate, changeDuration or switch-case
         let senderId: String = sender.accessibilityIdentifier ?? ""
         
         switch senderId {
-        case Constants.amountId:
-            calculator.amount = Double(sender.text ?? "0") ?? 0
         case Constants.durationId:
-            calculator.months = (Int(sender.text ?? "0") ?? 0) * 12
+            calculatorViewModel.months = (Int(sender.text ?? "0") ?? 0) * 12
         case Constants.rateId:
-            calculator.rate = Double(sender.text ?? "0") ?? 0
+            calculatorViewModel.rate = Double(sender.text ?? "0") ?? 0
         default:
             fatalError("Unknown field identifier")
         }
@@ -109,7 +122,7 @@ class NewCreditViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        let selectedRow = Constants.currencyIndex(of: calculator.currency)
+        let selectedRow = Constants.currencyIndex(of: calculatorViewModel.currency)
         pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
         
         vc.view.addSubview(pickerView)
@@ -128,7 +141,7 @@ class NewCreditViewController: UIViewController {
             let newSelectedRow = pickerView.selectedRow(inComponent: 0)
             let newCurrencyValue = Constants.currencies[newSelectedRow]
             
-            self.calculator.currency = newCurrencyValue
+            self.calculatorViewModel.currency = newCurrencyValue
             self.currencyButton.setTitle(newCurrencyValue, for: .normal)
             
             self.updatePayments()
@@ -173,21 +186,21 @@ class NewCreditViewController: UIViewController {
     }
     
     func updatePayments() {
-        payment.text = calculator.formattedPayment
-        overPayment.text = calculator.formattedOverPayment
+        payment.text = calculatorViewModel.formattedPayment
+        overPayment.text = calculatorViewModel.formattedOverPayment
     }
     
     func saveCredit(with title: String) {
         let newCreditItem = CreditItem(context: context)
         
-        newCreditItem.amount = Int64(calculator.amount)
+        newCreditItem.amount = Int64(calculatorViewModel.amount.value)
         newCreditItem.createdAt = Date()
-        newCreditItem.currency = calculator.currency
-        newCreditItem.duration = Int64(calculator.months)
+        newCreditItem.currency = calculatorViewModel.currency
+        newCreditItem.duration = Int64(calculatorViewModel.months)
         newCreditItem.id = UUID()
-        newCreditItem.overPayment = Float(calculator.overPayment)
-        newCreditItem.payment = Float(calculator.payment)
-        newCreditItem.rate = Float(calculator.rate)
+        newCreditItem.overPayment = Float(calculatorViewModel.overPayment)
+        newCreditItem.payment = Float(calculatorViewModel.payment)
+        newCreditItem.rate = Float(calculatorViewModel.rate)
         newCreditItem.title = title
         
         saveContext();
