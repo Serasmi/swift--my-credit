@@ -25,6 +25,7 @@
 		EDB065452744297A0053A0E1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB065442744297A0053A0E1 /* UIView+Ext.swift */; };
 		EDB0654727442FB10053A0E1 /* Float+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB0654627442FB10053A0E1 /* Float+Ext.swift */; };
 		EDB0654927458BBA0053A0E1 /* MCInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB0654827458BBA0053A0E1 /* MCInput.swift */; };
+		EDB4BF672769185000A72738 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4BF662769185000A72738 /* String+Ext.swift */; };
 		EDC2B261274C272D00DA4DB4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2B260274C272D00DA4DB4 /* TabBarController.swift */; };
 		EDC2B263274C2C6000DA4DB4 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2B262274C2C6000DA4DB4 /* UIStackView+Ext.swift */; };
 		EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */; };
@@ -52,6 +53,7 @@
 		EDB065442744297A0053A0E1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EDB0654627442FB10053A0E1 /* Float+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Ext.swift"; sourceTree = "<group>"; };
 		EDB0654827458BBA0053A0E1 /* MCInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCInput.swift; sourceTree = "<group>"; };
+		EDB4BF662769185000A72738 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		EDC2B260274C272D00DA4DB4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EDC2B262274C2C6000DA4DB4 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				ED3B626E2682598B001CB140 /* Double+Ext.swift */,
+				EDB4BF662769185000A72738 /* String+Ext.swift */,
 				EDB0654627442FB10053A0E1 /* Float+Ext.swift */,
 				EDC2B262274C2C6000DA4DB4 /* UIStackView+Ext.swift */,
 				EDB065442744297A0053A0E1 /* UIView+Ext.swift */,
@@ -259,6 +262,7 @@
 				EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */,
 				EDC2B263274C2C6000DA4DB4 /* UIStackView+Ext.swift in Sources */,
 				ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */,
+				EDB4BF672769185000A72738 /* String+Ext.swift in Sources */,
 				ED0236522669F9B000F96FAD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

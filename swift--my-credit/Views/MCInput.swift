@@ -15,9 +15,14 @@ class MCInput: UIView {
     
     private let label = UILabel()
     private let textField = UITextField(frame: .zero)
+    
+    private(set) var minimumValue: Float = Constants.inputMinValue
+    private(set) var maximumValue: Float = Constants.inputMaxValue
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        textField.delegate = self
         
         addSubview(label)
         addSubview(textField)
@@ -36,6 +41,9 @@ class MCInput: UIView {
                      minValue: Float = Constants.inputMinValue,
                      maxValue: Float = Constants.inputMaxValue) {
         self.init(frame: .zero)
+        
+        minimumValue = minValue
+        maximumValue = maxValue
         
         self.label.text = label
         setValue(with: value)
@@ -58,6 +66,8 @@ class MCInput: UIView {
         textField.font = .systemFont(ofSize: 18)
         textField.keyboardType = .numberPad
         
+        textField.addTarget(self, action: #selector(changeValue), for: .editingChanged)
+        
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.paddingInput),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.paddingInput),
@@ -75,20 +85,31 @@ class MCInput: UIView {
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
-    private func changeValue() {
+    @objc
+    private func changeValue(_ sender: UITextField) {
+        let normalizedValue = sender.text?.toFloat() ?? 0
+        textField.text = normalizedValue.round()
         
-        // TODO: implement logic and call method
+        self.listener?(normalizedValue)
+    }
+
+    private func normalizeValue() {
+        let normalizedValue = textField.text?.toFloat() ?? 0
         
-//        let roundedValue = round(sender.value / step) * step
-//
-//        sender.value = roundedValue
-//        self.delegate?.slider(sender, value: roundedValue)
-//        self.listener?(roundedValue)
+        if (normalizedValue < minimumValue) {
+            textField.text = minimumValue.round()
+            return
+        }
+        
+        if (normalizedValue > maximumValue) {
+            textField.text = maximumValue.round()
+            return
+        }
     }
     
     func bind(listener: Listener?) {
         self.listener = listener
-        listener?(Float(textField.text ?? "0") ?? 0)
+        listener?(textField.text?.toFloat() ?? 0)
     }
     
     func setValue(with value: Float, precision: UInt = 0) {
@@ -98,5 +119,12 @@ class MCInput: UIView {
             textField.text = newValue
             listener?(value)
         }
+    }
+}
+
+extension MCInput: UITextFieldDelegate {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        normalizeValue()
+        return true
     }
 }

@@ -8,9 +8,8 @@
 import Foundation
 
 class CalculatorViewModel {
-    private(set) var amount: Box<Double> {
-        didSet { calculate() }
-    }
+    private(set) var amount: Box<Double>
+    
     var currency: String
     var months: Int {
         didSet { calculate() }
@@ -42,6 +41,7 @@ class CalculatorViewModel {
     func setAmount(with value: Double) {
         if (self.amount.value != value) {
             self.amount.value = value
+            calculate()
         }
     }
     
