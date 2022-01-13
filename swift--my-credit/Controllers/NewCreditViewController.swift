@@ -14,7 +14,6 @@ class NewCreditViewController: UIViewController {
     
     @IBOutlet weak var mainStackView: UIStackView!
     
-    @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var rate: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var currencyButton: UIButton!
@@ -38,35 +37,41 @@ class NewCreditViewController: UIViewController {
                                         minSuffix: Constants.defaultCurrency,
                                         maxSuffix: Constants.defaultCurrency)
     
+
+    private var durationInput = MCInput(label: Constants.durationLabel,
+                                        value: Constants.duration,
+                                        minValue: Constants.durationMin,
+                                        maxValue: Constants.durationMax)
+    
+    private let durationSlider = MCSlider(value: Constants.duration,
+                                        minValue: Constants.durationMin,
+                                        maxValue: Constants.durationMax,
+                                        step: Constants.durationStep,
+                                        minSuffix: Constants.durationSuffix,
+                                        maxSuffix: Constants.durationSuffix)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainStackView.insertArrangedSubviews(amountInput, amountSlider, at: 2)
+        mainStackView.insertArrangedSubviews(durationInput, durationSlider, at: 4)
         
-        duration.accessibilityIdentifier = Constants.durationId
         rate.accessibilityIdentifier = Constants.rateId
         
         initData()
-        
-        configureAmountInput()
         
         initCurrencyButton()
         
         boundListeners()
     }
     
-    private func configureAmountInput() {
-        
-    }
-    
     func initData() {
         calculatorViewModel = CalculatorViewModel(
             amount: Double(Constants.amount),
             currency: Constants.defaultCurrency,
-            months: Constants.defaultDuration * 12,
+            years: Int(Constants.duration),
             rate: Constants.defaultRate)
         
-        duration.text = String(Constants.defaultDuration)
         rate.text = String(Constants.defaultRate)
         
         updatePayments()
@@ -84,6 +89,8 @@ class NewCreditViewController: UIViewController {
         calculatorViewModel.amount.bind { [unowned self] in
             self.amountInput.setValue(with: Float($0))
             self.amountSlider.setValue(with: Float($0))
+            
+            updatePayments()
         }
         
         amountSlider.bind { [unowned self] in
@@ -93,6 +100,21 @@ class NewCreditViewController: UIViewController {
         amountInput.bind { [unowned self] in
             self.calculatorViewModel.setAmount(with: Double($0))
         }
+        
+        calculatorViewModel.years.bind { [unowned self] in
+            self.durationInput.setValue(with: Float($0))
+            self.durationSlider.setValue(with: Float($0))
+            
+            updatePayments()
+        }
+        
+        durationSlider.bind { [unowned self] in
+            self.calculatorViewModel.setYears(with: Int($0))
+        }
+        
+        durationInput.bind { [unowned self] in
+            self.calculatorViewModel.setYears(with: Int($0))
+        }
     }
     
     @IBAction func calculate(_ sender: UITextField) {
@@ -100,8 +122,6 @@ class NewCreditViewController: UIViewController {
         let senderId: String = sender.accessibilityIdentifier ?? ""
         
         switch senderId {
-        case Constants.durationId:
-            calculatorViewModel.months = (Int(sender.text ?? "0") ?? 0) * 12
         case Constants.rateId:
             calculatorViewModel.rate = Double(sender.text ?? "0") ?? 0
         default:
@@ -196,7 +216,7 @@ class NewCreditViewController: UIViewController {
         newCreditItem.amount = Int64(calculatorViewModel.amount.value)
         newCreditItem.createdAt = Date()
         newCreditItem.currency = calculatorViewModel.currency
-        newCreditItem.duration = Int64(calculatorViewModel.months)
+        newCreditItem.duration = Int64(calculatorViewModel.years.value)
         newCreditItem.id = UUID()
         newCreditItem.overPayment = Float(calculatorViewModel.overPayment)
         newCreditItem.payment = Float(calculatorViewModel.payment)

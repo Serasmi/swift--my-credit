@@ -9,11 +9,9 @@ import Foundation
 
 class CalculatorViewModel {
     private(set) var amount: Box<Double>
+    private(set) var years: Box<Int>
     
     var currency: String
-    var months: Int {
-        didSet { calculate() }
-    }
     var rate: Double {
         didSet { calculate() }
     }
@@ -29,26 +27,33 @@ class CalculatorViewModel {
         "\(overPayment.formatAsCurrency(with: currency))"
     }
     
-    init(amount: Double, currency: String, months: Int, rate: Double) {
+    init(amount: Double, currency: String, years: Int, rate: Double) {
         self.amount = Box(amount)
         self.currency = currency
-        self.months = months
+        self.years = Box(years)
         self.rate = rate
         
         calculate()
     }
     
     func setAmount(with value: Double) {
-        if (self.amount.value != value) {
-            self.amount.value = value
+        if (amount.value != value) {
+            amount.value = value
+            calculate()
+        }
+    }
+    
+    func setYears(with value: Int) {
+        if (years.value != value) {
+            years.value = value
             calculate()
         }
     }
     
     func calculate() {
-        guard self.months != 0, rate != 0 else { return }
+        guard years.value != 0, rate != 0 else { return }
         
-        let months: Double = Double(months)
+        let months: Double = Double(years.value) * 12
         
         // month percents
         let mPs = rate / 100 / 12

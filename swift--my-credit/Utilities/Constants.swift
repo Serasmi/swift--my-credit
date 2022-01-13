@@ -28,11 +28,14 @@ struct Constants {
     static let amountStep: Float = 1_000
     static let amountLabel = "Credit amount"
     
-    static let defaultDuration = 20
+    static let duration: Float = 20
+    static let durationMin: Float = 5
+    static let durationMax: Float = 30
+    static let durationStep: Float = 1
+    static let durationLabel = "Credit duration (years)"
+    static let durationSuffix = "years"
     
     static let defaultRate = 9.6
-    
-    static let durationId = "durationId"
     
     static let rateId = "rateId"
     
