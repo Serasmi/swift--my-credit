@@ -20,6 +20,9 @@
 		ED55DE56265A94E700BABCDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED55DE54265A94E700BABCDC /* LaunchScreen.storyboard */; };
 		ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */; };
 		ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE62265A9C7600BABCDC /* AboutViewController.swift */; };
+		ED75AF5327914457005B16B8 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75AF5227914457005B16B8 /* PersistenceManager.swift */; };
+		ED75AF5527914558005B16B8 /* CoreDataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75AF5427914558005B16B8 /* CoreDataPersistenceManager.swift */; };
+		ED75AF5727914657005B16B8 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75AF5627914657005B16B8 /* Credit.swift */; };
 		EDB0653D274424060053A0E1 /* MCSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB0653C274424060053A0E1 /* MCSlider.swift */; };
 		EDB0653F274426BF0053A0E1 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB0653E274426BF0053A0E1 /* TestVC.swift */; };
 		EDB065452744297A0053A0E1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB065442744297A0053A0E1 /* UIView+Ext.swift */; };
@@ -48,6 +51,9 @@
 		ED55DE57265A94E700BABCDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditViewController.swift; sourceTree = "<group>"; };
 		ED55DE62265A9C7600BABCDC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		ED75AF5227914457005B16B8 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		ED75AF5427914558005B16B8 /* CoreDataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistenceManager.swift; sourceTree = "<group>"; };
+		ED75AF5627914657005B16B8 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		EDB0653C274424060053A0E1 /* MCSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSlider.swift; sourceTree = "<group>"; };
 		EDB0653E274426BF0053A0E1 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		EDB065442744297A0053A0E1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -118,11 +124,12 @@
 		ED55DE45265A94E600BABCDC /* swift--my-credit */ = {
 			isa = PBXGroup;
 			children = (
-				ED19F00C2761D1A40056F85C /* Helpers */,
-				EDB06540274427980053A0E1 /* Utilities */,
 				EDAB0B4726859D63009FAA40 /* Controllers */,
 				ED3B626D26825968001CB140 /* Extensions */,
+				ED19F00C2761D1A40056F85C /* Helpers */,
+				ED75AF51279143C9005B16B8 /* Managers */,
 				EDE0EDD12679C157006F077D /* Model */,
+				EDB06540274427980053A0E1 /* Utilities */,
 				ED19F00B2761CD240056F85C /* ViewModel */,
 				EDAB0B4826859DA6009FAA40 /* Views */,
 				ED55DE46265A94E600BABCDC /* AppDelegate.swift */,
@@ -131,6 +138,15 @@
 				ED55DE57265A94E700BABCDC /* Info.plist */,
 			);
 			path = "swift--my-credit";
+			sourceTree = "<group>";
+		};
+		ED75AF51279143C9005B16B8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ED75AF5227914457005B16B8 /* PersistenceManager.swift */,
+				ED75AF5427914558005B16B8 /* CoreDataPersistenceManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		EDAB0B4726859D63009FAA40 /* Controllers */ = {
@@ -170,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				ED55DE4F265A94E600BABCDC /* swift__my_credit.xcdatamodeld */,
+				ED75AF5627914657005B16B8 /* Credit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDB065452744297A0053A0E1 /* UIView+Ext.swift in Sources */,
+				ED75AF5727914657005B16B8 /* Credit.swift in Sources */,
 				EDB0653D274424060053A0E1 /* MCSlider.swift in Sources */,
 				ED19F00E2761D1AE0056F85C /* Box.swift in Sources */,
 				ED55DE51265A94E600BABCDC /* swift__my_credit.xcdatamodeld in Sources */,
@@ -259,8 +277,10 @@
 				EDB0653F274426BF0053A0E1 /* TestVC.swift in Sources */,
 				ED55DE49265A94E600BABCDC /* SceneDelegate.swift in Sources */,
 				EDB0654727442FB10053A0E1 /* Float+Ext.swift in Sources */,
+				ED75AF5327914457005B16B8 /* PersistenceManager.swift in Sources */,
 				EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */,
 				EDC2B263274C2C6000DA4DB4 /* UIStackView+Ext.swift in Sources */,
+				ED75AF5527914558005B16B8 /* CoreDataPersistenceManager.swift in Sources */,
 				ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */,
 				EDB4BF672769185000A72738 /* String+Ext.swift in Sources */,
 				ED0236522669F9B000F96FAD /* Constants.swift in Sources */,

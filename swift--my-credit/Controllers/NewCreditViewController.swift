@@ -9,8 +9,7 @@ import UIKit
 
 class NewCreditViewController: UIViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let saveContext = (UIApplication.shared.delegate as! AppDelegate).saveContext
+    private let persistanceManager: PersistenceManager = CoreDataPersistenceManager()
     
     @IBOutlet weak var mainStackView: UIStackView!
     
@@ -182,7 +181,15 @@ class NewCreditViewController: UIViewController {
         
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action in
             if let creditTitle = alertMessage.textFields?.first?.text {
-                self.saveCredit(with: creditTitle)
+                let creditDraft = CreditDraft(amount: self.calculatorViewModel.amount.value,
+                                              currency: self.calculatorViewModel.currency,
+                                              duration: self.calculatorViewModel.years.value,
+                                              overPayment: Float(self.calculatorViewModel.overPayment),
+                                              payment: Float(self.calculatorViewModel.payment),
+                                              rate: Float(self.calculatorViewModel.rate),
+                                              title: creditTitle)
+                
+                self.persistanceManager.saveCredit(creditDraft)
             }
         })
         saveAction.isEnabled = false
@@ -208,22 +215,6 @@ class NewCreditViewController: UIViewController {
     func updatePayments() {
         payment.text = calculatorViewModel.formattedPayment
         overPayment.text = calculatorViewModel.formattedOverPayment
-    }
-    
-    func saveCredit(with title: String) {
-        let newCreditItem = CreditItem(context: context)
-        
-        newCreditItem.amount = Int64(calculatorViewModel.amount.value)
-        newCreditItem.createdAt = Date()
-        newCreditItem.currency = calculatorViewModel.currency
-        newCreditItem.duration = Int64(calculatorViewModel.years.value)
-        newCreditItem.id = UUID()
-        newCreditItem.overPayment = Float(calculatorViewModel.overPayment)
-        newCreditItem.payment = Float(calculatorViewModel.payment)
-        newCreditItem.rate = Float(calculatorViewModel.rate)
-        newCreditItem.title = title
-        
-        saveContext();
     }
 }
 
