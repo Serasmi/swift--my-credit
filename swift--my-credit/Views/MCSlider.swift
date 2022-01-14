@@ -108,6 +108,14 @@ class MCSlider: UIView {
             listener?(value)
         }
     }
+    
+    public func updateMinSuffix(with suffix: String) {
+        // TODO: update suffix implementation
+    }
+    
+    public func updateMaxSuffix(with suffix: String) {
+        // TODO: update suffix implementation
+    }
 }
 
 extension MCSlider {

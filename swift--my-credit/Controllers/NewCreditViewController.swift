@@ -64,9 +64,13 @@ class NewCreditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainStackView.insertArrangedSubviews(amountInput, amountSlider, at: 2)
-        mainStackView.insertArrangedSubviews(durationInput, durationSlider, at: 4)
-        mainStackView.insertArrangedSubviews(rateInput, rateSlider, at: 6)
+        mainStackView.insertArrangedSubviews(amountInput,
+                                             amountSlider,
+                                             durationInput,
+                                             durationSlider,
+                                             rateInput,
+                                             rateSlider,
+                                             at: 0)
         
         initData()
         
@@ -174,6 +178,7 @@ class NewCreditViewController: UIViewController {
             self.currencyButton.setTitle(newCurrencyValue, for: .normal)
             
             self.updatePayments()
+            self.updateCurrencyLabels()
         }))
         
         self.present(alertMessage, animated: true, completion: nil)
@@ -222,7 +227,12 @@ class NewCreditViewController: UIViewController {
         super.touchesBegan(touches, with: event)
     }
     
-    func updatePayments() {
+    private func updateCurrencyLabels() {
+        amountSlider.updateMinSuffix(with: calculatorViewModel.currency)
+        amountSlider.updateMaxSuffix(with: calculatorViewModel.currency)
+    }
+    
+    private func updatePayments() {
         payment.text = calculatorViewModel.formattedPayment
         overPayment.text = calculatorViewModel.formattedOverPayment
     }
