@@ -13,7 +13,6 @@ class NewCreditViewController: UIViewController {
     
     @IBOutlet weak var mainStackView: UIStackView!
     
-    @IBOutlet weak var rate: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var currencyButton: UIButton!
     
@@ -36,7 +35,7 @@ class NewCreditViewController: UIViewController {
                                         minSuffix: Constants.defaultCurrency,
                                         maxSuffix: Constants.defaultCurrency)
     
-
+    
     private var durationInput = MCInput(label: Constants.durationLabel,
                                         value: Constants.duration,
                                         minValue: Constants.durationMin,
@@ -49,13 +48,25 @@ class NewCreditViewController: UIViewController {
                                         minSuffix: Constants.durationSuffix,
                                         maxSuffix: Constants.durationSuffix)
     
+    
+    private var rateInput = MCInput(label: Constants.rateLabel,
+                                        value: Constants.rate,
+                                        minValue: Constants.rateMin,
+                                        maxValue: Constants.rateMax)
+    
+    private let rateSlider = MCSlider(value: Constants.rate,
+                                        minValue: Constants.rateMin,
+                                        maxValue: Constants.rateMax,
+                                        step: Constants.rateStep,
+                                        minSuffix: Constants.rateSuffix,
+                                        maxSuffix: Constants.rateSuffix)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainStackView.insertArrangedSubviews(amountInput, amountSlider, at: 2)
         mainStackView.insertArrangedSubviews(durationInput, durationSlider, at: 4)
-        
-        rate.accessibilityIdentifier = Constants.rateId
+        mainStackView.insertArrangedSubviews(rateInput, rateSlider, at: 6)
         
         initData()
         
@@ -69,9 +80,7 @@ class NewCreditViewController: UIViewController {
             amount: Double(Constants.amount),
             currency: Constants.defaultCurrency,
             years: Int(Constants.duration),
-            rate: Constants.defaultRate)
-        
-        rate.text = String(Constants.defaultRate)
+            rate: Double(Constants.rate))
         
         updatePayments()
     }
@@ -114,20 +123,21 @@ class NewCreditViewController: UIViewController {
         durationInput.bind { [unowned self] in
             self.calculatorViewModel.setYears(with: Int($0))
         }
-    }
-    
-    @IBAction func calculate(_ sender: UITextField) {
-        // todo: split func => changeAmount, changeRate, changeDuration or switch-case
-        let senderId: String = sender.accessibilityIdentifier ?? ""
         
-        switch senderId {
-        case Constants.rateId:
-            calculatorViewModel.rate = Double(sender.text ?? "0") ?? 0
-        default:
-            fatalError("Unknown field identifier")
+        calculatorViewModel.rate.bind { [unowned self] in
+            self.rateInput.setValue(with: Float($0), precision: 1)
+            self.rateSlider.setValue(with: Float($0))
+            
+            updatePayments()
         }
         
-        updatePayments()
+        rateSlider.bind { [unowned self] in
+            self.calculatorViewModel.setRate(with: Double($0))
+        }
+        
+        rateInput.bind { [unowned self] in
+            self.calculatorViewModel.setRate(with: Double($0))
+        }
     }
     
     @IBAction func tapCurrency(_ sender: UIButton) {
@@ -186,7 +196,7 @@ class NewCreditViewController: UIViewController {
                                               duration: self.calculatorViewModel.years.value,
                                               overPayment: Float(self.calculatorViewModel.overPayment),
                                               payment: Float(self.calculatorViewModel.payment),
-                                              rate: Float(self.calculatorViewModel.rate),
+                                              rate: Float(self.calculatorViewModel.rate.value),
                                               title: creditTitle)
                 
                 self.persistanceManager.saveCredit(creditDraft)

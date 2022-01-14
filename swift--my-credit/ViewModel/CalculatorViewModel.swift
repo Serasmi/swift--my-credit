@@ -9,12 +9,10 @@ import Foundation
 
 class CalculatorViewModel {
     private(set) var amount: Box<Double>
+    private(set) var rate: Box<Double>
     private(set) var years: Box<Int>
     
     var currency: String
-    var rate: Double {
-        didSet { calculate() }
-    }
     
     var payment: Double = 0
     var overPayment: Double = 0
@@ -31,7 +29,7 @@ class CalculatorViewModel {
         self.amount = Box(amount)
         self.currency = currency
         self.years = Box(years)
-        self.rate = rate
+        self.rate = Box(rate)
         
         calculate()
     }
@@ -39,6 +37,13 @@ class CalculatorViewModel {
     func setAmount(with value: Double) {
         if (amount.value != value) {
             amount.value = value
+            calculate()
+        }
+    }
+    
+    func setRate(with value: Double) {
+        if (rate.value != value) {
+            rate.value = value
             calculate()
         }
     }
@@ -51,12 +56,12 @@ class CalculatorViewModel {
     }
     
     func calculate() {
-        guard years.value != 0, rate != 0 else { return }
+        guard years.value != 0, rate.value != 0 else { return }
         
         let months: Double = Double(years.value) * 12
         
         // month percents
-        let mPs = rate / 100 / 12
+        let mPs = rate.value / 100 / 12
         
         let coef = mPs * pow(1 + mPs, months) / (pow(1 + mPs, months) - 1)
         
