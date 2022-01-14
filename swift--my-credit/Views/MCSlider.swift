@@ -22,6 +22,8 @@ class MCSlider: UIView {
     private let maxLabel = UILabel()
     
     private(set) var step: Float = Constants.sliderStep
+    private(set) var minSuffix: String?
+    private(set) var maxSuffix: String?
     
     public weak var delegate: MCSliderDelegate?
     
@@ -52,8 +54,8 @@ class MCSlider: UIView {
         
         self.step = step
         
-        minLabel.text = getFullText(for: minValue.round(), with: minSuffix)
-        maxLabel.text = getFullText(for: maxValue.round(), with: maxSuffix)
+        updateLabel(minLabel, with: minValue, suffix: minSuffix)
+        updateLabel(maxLabel, with: maxValue, suffix: maxSuffix)
     }
     
     private func configureLabels() {
@@ -97,12 +99,12 @@ class MCSlider: UIView {
         self.listener?(roundedValue)
     }
     
-    func bind(listener: Listener?) {
+    public func bind(listener: Listener?) {
         self.listener = listener
         listener?(slider.value)
     }
     
-    func setValue(with value: Float) {
+    public func setValue(with value: Float) {
         if (value != slider.value) {
             slider.value = value
             listener?(value)
@@ -110,11 +112,15 @@ class MCSlider: UIView {
     }
     
     public func updateMinSuffix(with suffix: String) {
-        // TODO: update suffix implementation
+        updateLabel(minLabel, with: slider.minimumValue, suffix: suffix)
     }
     
     public func updateMaxSuffix(with suffix: String) {
-        // TODO: update suffix implementation
+        updateLabel(maxLabel, with: slider.maximumValue, suffix: suffix)
+    }
+    
+    private func updateLabel(_ label: UILabel, with value: Float, suffix: String?) {
+        label.text = getFullText(for: value.round(), with: suffix)
     }
 }
 
