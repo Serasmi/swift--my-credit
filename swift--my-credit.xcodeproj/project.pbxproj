@@ -20,6 +20,7 @@
 		ED55DE56265A94E700BABCDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED55DE54265A94E700BABCDC /* LaunchScreen.storyboard */; };
 		ED55DE61265A9B1400BABCDC /* NewCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */; };
 		ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED55DE62265A9C7600BABCDC /* AboutViewController.swift */; };
+		ED691A492795F2BD00F26FB3 /* MCHorizontalRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED691A482795F2BD00F26FB3 /* MCHorizontalRule.swift */; };
 		ED75AF5327914457005B16B8 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75AF5227914457005B16B8 /* PersistenceManager.swift */; };
 		ED75AF5527914558005B16B8 /* CoreDataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75AF5427914558005B16B8 /* CoreDataPersistenceManager.swift */; };
 		ED75AF5727914657005B16B8 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75AF5627914657005B16B8 /* Credit.swift */; };
@@ -51,6 +52,7 @@
 		ED55DE57265A94E700BABCDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED55DE60265A9B1400BABCDC /* NewCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditViewController.swift; sourceTree = "<group>"; };
 		ED55DE62265A9C7600BABCDC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		ED691A482795F2BD00F26FB3 /* MCHorizontalRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCHorizontalRule.swift; sourceTree = "<group>"; };
 		ED75AF5227914457005B16B8 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		ED75AF5427914558005B16B8 /* CoreDataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistenceManager.swift; sourceTree = "<group>"; };
 		ED75AF5627914657005B16B8 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				ED55DE54265A94E700BABCDC /* LaunchScreen.storyboard */,
 				EDB0653C274424060053A0E1 /* MCSlider.swift */,
 				EDB0654827458BBA0053A0E1 /* MCInput.swift */,
+				ED691A482795F2BD00F26FB3 /* MCHorizontalRule.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				EDC2B261274C272D00DA4DB4 /* TabBarController.swift in Sources */,
 				EDE0EDD32679C16F006F077D /* CalculatorViewModel.swift in Sources */,
 				ED55DE63265A9C7600BABCDC /* AboutViewController.swift in Sources */,
+				ED691A492795F2BD00F26FB3 /* MCHorizontalRule.swift in Sources */,
 				EDB0654927458BBA0053A0E1 /* MCInput.swift in Sources */,
 				ED40B6BF26674E5D00D82624 /* CreditDetailsViewController.swift in Sources */,
 				EDB0653F274426BF0053A0E1 /* TestVC.swift in Sources */,

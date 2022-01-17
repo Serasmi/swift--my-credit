@@ -61,16 +61,20 @@ class NewCreditViewController: UIViewController {
                                         minSuffix: Constants.rateSuffix,
                                         maxSuffix: Constants.rateSuffix)
     
+    private let divider1 = MCHorizontalRule()
+    private let divider2 = MCHorizontalRule()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainStackView.insertArrangedSubviews(amountInput,
                                              amountSlider,
+                                             divider1,
                                              durationInput,
                                              durationSlider,
+                                             divider2,
                                              rateInput,
-                                             rateSlider,
-                                             at: 0)
+                                             rateSlider)
         
         initData()
         
