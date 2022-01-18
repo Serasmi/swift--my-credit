@@ -18,22 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6Vn-4L-JnF">
-                                <rect key="frame" x="0.0" y="60" width="414" height="753"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="709"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-XT-GMB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="No credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngM-on-KHx">
-                                        <rect key="frame" x="0.0" y="31" width="414" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="udP-3p-MMO">
-                                        <rect key="frame" x="0.0" y="39" width="414" height="714"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="709"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreditTableViewCell" id="fPa-v8-z3Q" customClass="CreditTableViewCell" customModule="swift__my_credit" customModuleProvider="target">
@@ -61,7 +55,7 @@
                             <constraint firstItem="6Vn-4L-JnF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="y1E-6e-w1P"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Credits" image="list.bullet" catalog="system" id="wS5-2o-tgP"/>
+                    <navigationItem key="navigationItem" title="Credits" id="dWu-RK-FWA"/>
                     <connections>
                         <outlet property="emptyDataVIew" destination="ngM-on-KHx" id="OWT-pJ-B5b"/>
                         <outlet property="tableView" destination="udP-3p-MMO" id="bn3-5d-oMn"/>
@@ -69,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-735" y="782"/>
+            <point key="canvasLocation" x="-736" y="1468"/>
         </scene>
         <!--Credit Details View Controller-->
         <scene sceneID="lId-3B-WJJ">
@@ -197,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIL-D4-iEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736" y="2197"/>
+            <point key="canvasLocation" x="-736" y="2830"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4Of-Sq-uWl">
@@ -210,7 +204,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="55w-gZ-jCV"/>
+                        <segue destination="QJw-JM-EXc" kind="relationship" relationship="viewControllers" id="55w-gZ-jCV"/>
                         <segue destination="GQ8-1n-tea" kind="relationship" relationship="viewControllers" id="op0-mg-zH1"/>
                         <segue destination="F1n-ch-5le" kind="relationship" relationship="viewControllers" id="FfJ-nT-dxs"/>
                     </connections>
@@ -362,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2E-4T-bGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1695.6521739130435" y="780.80357142857144"/>
+            <point key="canvasLocation" x="2605.7971014492755" y="780.80357142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ghc-8A-V4P">
@@ -380,7 +374,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxg-uQ-kmb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736.23188405797111" y="1502.6785714285713"/>
+            <point key="canvasLocation" x="-736" y="2152"/>
         </scene>
         <!--TestVC-->
         <scene sceneID="BIh-vQ-bQC">
@@ -414,7 +408,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfS-QO-s23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="780.80357142857144"/>
+            <point key="canvasLocation" x="19" y="781"/>
+        </scene>
+        <!--Credits-->
+        <scene sceneID="6uf-OE-Dg0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QJw-JM-EXc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Credits" image="list.bullet" catalog="system" id="wS5-2o-tgP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nwN-cn-n30">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="byP-MI-yei"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H6F-gN-40W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-736.23188405797111" y="781.47321428571422"/>
         </scene>
     </scenes>
     <resources>

@@ -25,7 +25,7 @@ class CreditDetailsViewController: UIViewController {
     
     private func initUI() {
         navigationItem.title = creditItem.title
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(tapDelete))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(tapDismiss))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tapEdit))
     }
     
@@ -42,8 +42,8 @@ class CreditDetailsViewController: UIViewController {
         print("Edit credit tapped")
     }
     
-    @objc func tapDelete() {
-        print("Delete credit tapped")
+    @objc func tapDismiss() {
+        dismiss(animated: true)
     }
 
     /*
