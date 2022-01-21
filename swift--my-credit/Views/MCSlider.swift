@@ -25,6 +25,7 @@ class MCSlider: UIView {
     private(set) var minSuffix: String?
     private(set) var maxSuffix: String?
     
+    public var labelFormatter: NumberFormatter?
     public weak var delegate: MCSliderDelegate?
     
     override init(frame: CGRect) {
@@ -111,15 +112,20 @@ class MCSlider: UIView {
         }
     }
     
-    public func updateMinSuffix(with suffix: String) {
+    public func updateMinLabelSuffix(with suffix: String? = nil) {
         updateLabel(minLabel, with: slider.minimumValue, suffix: suffix)
     }
     
-    public func updateMaxSuffix(with suffix: String) {
+    public func updateMaxLabelSuffix(with suffix: String? = nil) {
         updateLabel(maxLabel, with: slider.maximumValue, suffix: suffix)
     }
     
     private func updateLabel(_ label: UILabel, with value: Float, suffix: String?) {
+        if let formatter = labelFormatter {
+            label.text = formatter.string(from: NSNumber(value: value))
+            return
+        }
+        
         label.text = getFullText(for: value.round(), with: suffix)
     }
 }

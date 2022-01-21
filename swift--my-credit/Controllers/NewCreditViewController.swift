@@ -67,6 +67,15 @@ class NewCreditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initData()
+        initUI()
+        
+        initCurrencyButton()
+        
+        boundListeners()
+    }
+    
+    private func initUI() {
         mainStackView.insertArrangedSubviews(amountInput,
                                              amountSlider,
                                              divider1,
@@ -76,14 +85,16 @@ class NewCreditViewController: UIViewController {
                                              rateInput,
                                              rateSlider)
         
-        initData()
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.maximumFractionDigits = 0
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.currencySymbol = calculatorViewModel.currency
         
-        initCurrencyButton()
-        
-        boundListeners()
+        amountSlider.labelFormatter = currencyFormatter
+        updateCurrencyLabels()
     }
     
-    func initData() {
+    private func initData() {
         calculatorViewModel = CalculatorViewModel(
             amount: Double(Constants.amount),
             currency: Constants.defaultCurrency,
@@ -93,7 +104,7 @@ class NewCreditViewController: UIViewController {
         updatePayments()
     }
     
-    func initCurrencyButton() {
+    private func initCurrencyButton() {
         currencyButton.backgroundColor = .clear
         currencyButton.layer.cornerRadius = 5
         currencyButton.layer.borderWidth = 1
@@ -232,8 +243,9 @@ class NewCreditViewController: UIViewController {
     }
     
     private func updateCurrencyLabels() {
-        amountSlider.updateMinSuffix(with: calculatorViewModel.currency)
-        amountSlider.updateMaxSuffix(with: calculatorViewModel.currency)
+        amountSlider.labelFormatter!.currencySymbol = calculatorViewModel.currency
+        amountSlider.updateMinLabelSuffix()
+        amountSlider.updateMaxLabelSuffix()
     }
     
     private func updatePayments() {

@@ -34,6 +34,7 @@
 		EDC2B263274C2C6000DA4DB4 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2B262274C2C6000DA4DB4 /* UIStackView+Ext.swift */; };
 		EDCD78C52665555E00E6A5D2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */; };
 		EDE0EDD32679C16F006F077D /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0EDD22679C16F006F077D /* CalculatorViewModel.swift */; };
+		EDE86046279B36A7000EED26 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE86045279B36A7000EED26 /* Currency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +57,7 @@
 		ED75AF5227914457005B16B8 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		ED75AF5427914558005B16B8 /* CoreDataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistenceManager.swift; sourceTree = "<group>"; };
 		ED75AF5627914657005B16B8 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
-		EDB0653C274424060053A0E1 /* MCSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSlider.swift; sourceTree = "<group>"; };
+		EDB0653C274424060053A0E1 /* MCSlider.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MCSlider.swift; sourceTree = "<group>"; tabWidth = 4; };
 		EDB0653E274426BF0053A0E1 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		EDB065442744297A0053A0E1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EDB0654627442FB10053A0E1 /* Float+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Ext.swift"; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 		EDC2B262274C2C6000DA4DB4 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		EDCD78C42665555E00E6A5D2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		EDE0EDD22679C16F006F077D /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		EDE86045279B36A7000EED26 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			children = (
 				ED55DE4F265A94E600BABCDC /* swift__my_credit.xcdatamodeld */,
 				ED75AF5627914657005B16B8 /* Credit.swift */,
+				EDE86045279B36A7000EED26 /* Currency.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				ED19F00E2761D1AE0056F85C /* Box.swift in Sources */,
 				ED55DE51265A94E600BABCDC /* swift__my_credit.xcdatamodeld in Sources */,
 				ED55DE4B265A94E600BABCDC /* CreditsViewController.swift in Sources */,
+				EDE86046279B36A7000EED26 /* Currency.swift in Sources */,
 				ED55DE47265A94E600BABCDC /* AppDelegate.swift in Sources */,
 				ED3B626F2682598B001CB140 /* Double+Ext.swift in Sources */,
 				EDC2B261274C272D00DA4DB4 /* TabBarController.swift in Sources */,

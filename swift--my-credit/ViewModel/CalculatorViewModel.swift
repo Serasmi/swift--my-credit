@@ -14,6 +14,10 @@ class CalculatorViewModel {
     
     var currency: String
     
+    var currencyCode: String {
+        (Currency(rawValue: currency) ?? Currency.usd).title
+    }
+    
     var payment: Double = 0
     var overPayment: Double = 0
     
